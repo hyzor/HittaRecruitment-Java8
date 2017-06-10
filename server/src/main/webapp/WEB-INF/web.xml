@@ -5,8 +5,8 @@
     <display-name>Hitta Recruitment</display-name>
 
     <servlet>
-        <servlet-name>hello-world</servlet-name>
-        <servlet-class>se.hitta.recruitment.server.HelloWorld</servlet-class>
+        <servlet-name>person-servlet</servlet-name>
+        <servlet-class>se.hitta.recruitment.server.PersonServlet</servlet-class>
         <init-param>
             <param-name>load-on-startup</param-name>
             <param-value>1</param-value>
@@ -14,7 +14,7 @@
     </servlet>
 
     <servlet-mapping>
-        <servlet-name>hello-world</servlet-name>
+        <servlet-name>person-servlet</servlet-name>
         <url-pattern>/*</url-pattern>
     </servlet-mapping>
 </web-app>

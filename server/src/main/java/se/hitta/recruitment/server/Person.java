@@ -4,10 +4,8 @@ import javax.json.Json;
 import javax.json.JsonObject;
 import javax.json.JsonObjectBuilder;
 
-public class Person 
-{
-	public Person(Integer id, String name_given, String name_family, String gender, String email, String homepage)
-	{
+public class Person {
+	public Person(Integer id, String name_given, String name_family, String gender, String email, String homepage) {
 		this.id = id;
 		this.name_given = name_given;
 		this.name_family = name_family;
@@ -18,31 +16,26 @@ public class Person
 	}
 	
 	@Override
-	public String toString()
-	{
+	public String toString() {
 		return Integer.toString(id) + " " + name_given + " " + name_family + " " + gender + " " + email + " " + homepage;
 	}
 	
-	public boolean equals(Person other)
-	{
+	public boolean equals(Person other) {
 		if (this.hashCode.equals(other.hashCode))
 			return true;
 		
 		return false;
 	}
 	
-	public int getHashCode()
-	{
+	public int getHashCode() {
 		return new String(name_given + name_family + gender + email + homepage).hashCode();
 	}
 	
-	public String getFullName()
-	{
+	public String getFullName() {
 		return name_given + " " + name_family;
 	}
 	
-	private String getCleanEmail()
-	{
+	private String getCleanEmail() {
 		String[] split = email.split(":");
 		String cleanEmail = split[0];
 		
@@ -52,13 +45,11 @@ public class Person
 		return cleanEmail;
 	}
 	
-	public JsonObject toJsonObj()
-	{		
+	public JsonObject toJsonObj() {		
 		return toJsonObjBuilder().build();		
 	}
 	
-	public JsonObjectBuilder toJsonObjBuilder()
-	{
+	public JsonObjectBuilder toJsonObjBuilder() {
 		JsonObjectBuilder objBuilder = Json.createObjectBuilder()
 				.add(getFullName(), Json.createObjectBuilder()
 						.add("name", Json.createObjectBuilder()
