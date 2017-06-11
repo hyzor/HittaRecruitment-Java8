@@ -47,12 +47,10 @@ public class PersonServlet extends HttpServlet {
     	final PrintWriter out = resp.getWriter();
     	
     	Integer id = null;
-    	String pathInfo = req.getPathInfo();
     	String gender = req.getParameter("gender");
     	boolean success = false;
     	
-    	if (pathInfo != null)
-    		id = getIdFromPath(req.getPathInfo());
+    	id = getIdFromPath(req.getPathInfo());
     	
     	if (id != null) { // User has requested to fetch a specific person ID
     		success = true;
@@ -101,9 +99,12 @@ public class PersonServlet extends HttpServlet {
     }
     
     private Integer getIdFromPath(String pathInfo) {
+    	if (pathInfo == null)
+    		return null;
+    	
     	String val = pathInfo.replaceAll("[^\\d]", "");
     	
-    	if (val.equals(""))
+    	if (pathInfo.isEmpty())
     		return null;
     	
     	return Integer.valueOf(val);
